@@ -1,241 +1,203 @@
 #define _CRT_SECURE_NO_WARNINGS 1
-//程序一
-//#include<stdio.h>
-//int main()
-//{
-//	short s = 0;//short 2个字节
-//	int a = 10;
-//	printf("%d\n", sizeof(s = a + 5));//2  s值没有变化 不参与运算
-//	printf("%d\n", s);//0
-//	return 0;
-//}
-//#include<stdio.h>
-//int main()
-//{
-//	int a = 0;
-//	//0000000 00000000 00000000 00000000
-//	//1111111 11111111 11111111 11111111-补码
-//	//1111111 11111111 11111111 11111110-反码
-//	//1000000 00000000 00000000 00000001-原码
-//	//-1
-//	printf("%d\n", ~a);
-//	
-//	return 0;
-//}
-//#include<stdio.h>
-//int main()
-//{
-//	int a = 11;
-//	a = a | (1 << 2);
-//	printf("%d\n", a);
-//	a = a & (~(1 << 2));
-//	printf("%d\n", a);
+//指针数组笔试题解析.
+#include<stdio.h>
+//数组名是首元素的地址
+//1.sizeof（数组名）-数组名表示整个数组
+//2.&数组名-数组名表示整个数组
 //
-//	//00000000 0000000 00000000 00001011
-//	//00000000 0000000 00000000 00000100
-//	//00000000 0000000 00000000 00001111
-//	//1<<2;
-//	//00000000 00000000 00000000 00000001
-//	// <<2
-//	//00000000 00000000 00000000 00000100
-//	// ~
-//	//11111111 11111111 11111111 11111011
-//	// &
-//	//00000000 00000000 00000000 00001111
-//	//00000000 00000000 00000000 00001011
-//	return 0;
+//一堆数组
+//int main()
+//{
+//	int a[] = { 1,2,3,4 };
+//	printf("%d\n", sizeof(a));// 16 计算数组总大小
+//	printf("%d\n", sizeof(a + 0));// 4/8 - 数组名这里表示首元素的值，a+0 还是首元素地址
+//	printf("%d\n", sizeof(*a));//4  数组名表示首元素地址，*a就是首元素，sizeof（*a)就是4
+//	printf("%d\n", sizeof(a + 1));//4  第二个元素地址
+//	printf("%d\n", sizeof(a[1]));//4 - 第二个元素的大小 
+//	printf("%d\n", sizeof(&a));//4/8 &a取出的是数组的地址，但是数组的地址那也是地址，地址的大小就是4/8
+//	printf("%d\n", sizeof(*&a));//16 &a数组的地址，用解引用访问 抵消了 计算的是数组大小单位是字节
+//	printf("%d\n", sizeof(&a+1));//4/8 &a+1 跳过整个数组地址 还是地址
+//	printf("%d\n", sizeof(&a[0]));//4/8   //第一个元素地址 
+//	printf("%d\n", sizeof(&a[0]+1));//4/8 //第二个元素地址
+//
 //}
+//int main()
+//{
+//	char arr[] = {'a','b','c','d','e','f'};
+//	printf("%d\n", sizeof(arr));// 6*1=6
+//	printf("%d\n", sizeof(arr+ 0));//4/8 arr是首元素的地址，arr+0还是首元素的地址 地址的大小是4/8
+//	printf("%d\n", sizeof(*arr));//1
+//	printf("%d\n", sizeof(arr + 1));//4/8 第二个元素的地址
+//	printf("%d\n", sizeof(arr[1]));//1
+//	printf("%d\n", sizeof(&arr));//4/8
+//	printf("%d\n", sizeof(*&arr));//6
+//	printf("%d\n", sizeof(&arr + 1));//4/8
+//	printf("%d\n", sizeof(&arr[0]));//4/8
+//	printf("%d\n", sizeof(&arr[0] + 1));//4/8
+//}
+//int main()
+//{
+//	char arr[] = { 'a','b','c','d','e','f' };
+//	printf("%d\n", strlen(arr));  //随机值
+//	printf("%d\n", strlen(arr+0));//随机值
+//	//printf("%d\n", strlen(*arr));//写法错误 'a'是97会一直算 读不出来 错误代码
+//	//printf("%d\n", strlen(arr[1]));//写法错误
+//	printf("%d\n", strlen(&arr));//随机值，不知道什么时候遇到\0
+//	printf("%d\n", strlen(&arr+1));//随机值和上一个差6
+//	printf("%d\n", strlen(&arr[0]+1));//第二个元素开始算 随机值 差1
+//}
+// 广大程序题
 //#include<stdio.h>
 //int main()
 //{
-//	int a = 10;
-//	//printf("%d\n", ++a);
-//	printf("%d\n", a++);
-//	return 0;
+//	int i;
+//	for (i = 1; i <= 5; i++)
+//	{
+//		if (i % 2)
+//			putchar('<');
+//		else
+//			continue;
+//		putchar('>');
+//	}
+//	putchar('#');
 //}
+//#include<stdio.h>
+//#include<string.h>
+//main()
+//{
+//	char s[6];
+//	int n;
+//	gets(s);
+//	if (*s == '-')
+//		n = -chnum(s + 1);
+//	else n = chnum(s);
+//	printf("%d\n", n);
+//}
+//chnum(char* p)
+//{
+//	int num = 0, k, len, j;
+//	len = strlen(p);
+//	for (; *p != '\0'; p++)
+//	{
+//		k = *p - 48;
+//		j = (--len);
+//		while (j--)
+//		{
+//			k = k * 10;
+//		}
+//		num = num + k;
+//	}
+//	return(num);
+//}
+//#include<stdio.h>
+//main()
+//{
+//    int k;
+//    for (k = 1; k < 5; k++) {
+//        if (k % 2)  printf("*");
+//        else continue;
+//        printf("#");
+//    }
+//}
+//#include<stdio.h>
+//main()
+//{
+//	static int a[] = { 5,3,7,2,1,5,4,10 };
+//	int s = 0, k;
+//	for (k = 0; k < 8; k += 2)
+//		s += *(a + k);
+//
+//}
+//# include <stdio.h>
+//int f(int x)
+//{
+//	static y = 1;
+//	y++;
+//	x += y;
+//	return x;
+//}
+//void main()
+//{
+//	int k;
+//	k = f(3);
+//	printf("%d  %d\n", k, f(k));
+//
+////}
 //#include<stdio.h>
 //int main()
 //{
-//	int a = 10;
-//	//printf("%d\n", ++a);
-//	printf("%d\n", a++);
-//	return 0;
+//	int  k; char* s = "ABC";
+//	for (k = 10; k != 0; k--);
+//	printf("%d", k);
+//	while (*s++)  putchar(*s);
+//
+//}
+//#include <stdio.h>
+//#define DOUBLE(r)   r*r
+//main()
+//{
+//	int x = 9, y = 6, t;
+//	t = DOUBLE(x + y);
+//	printf("%d\n" , t);
 //}
 //#include<stdio.h>
+//struct
+//{
+//    int x;
+//    char* y;
+//} tab[2] = { {1,"ab"},{2,"cd"}}, * p = tab;
 //int main()
 //{
-//	int a = (int)3.14;
+//    printf("%c\n", (*p->y));
+//}
+//#include <stdio.h>
+//void sub(int x, int y, int* z)
+//{
+//	*z = x - y;
+//}
+//void main()
+//{
+//	int a = 0, x = 5, y = 10;
+//	sub(y, x, &a);
 //	printf("%d\n", a);
-//	return 0;
 //}
-//#include<stdio.h>
-//void test1(int arr[])
+//#include <stdio.h>
+//void main()
 //{
-//	printf("%d\n", sizeof(arr));//4 
+//	int a[5] = { 10,20,30,40,50 };
+//	int* p = &a[2];
+//	printf("%d,", *p++);
+//	printf("%d", *p);
 //}
-//void test2(char ch[])
+//#include <stdio.h>
+//typedef struct date {
+//	int cat;
+//	long L;
+//	char c[10];
+//} TOO;
+//main()
 //{
-//	printf("%d\n",sizeof(ch));//4  传过去的是首元素地址
+//	printf("%d\n", sizeof(TOO));
+//	printf("%d\n", sizeof(long));
 //}
-//int main()
+//#include <stdio.h>
+//fun2(int a, int b)
 //{
-//	int arr[10] = {0};
-//	char ch[10] = { 0 };
-//	printf("%d\n", sizeof(arr));//40
-//	printf("%d\n", sizeof(ch));//20
-//	test1(arr);
-//	test2(ch);
-//	return 0;
+//	int c;
+//	c = a * b % 3;
+//	return c;
 //}
-//逻辑操作符
-//#include<stdio.h>
-//int main()
+//fun1(int a, int b)
 //{
-//int a = 3;
-//int b = 5;
-//int c = a && b;
-//printf("%d\n", c);
-//return 0;
-//}//1
-//#include<stdio.h>
-//int main()
-//{
-//	int a = 0;
-//	int b = 5;
-//	int c = a && b;
-//	printf("%d\n", c);
-//	return 0;
-//}//0
-/*#include<stdio.h>
-int main()
-{
-	int a = 0;
-	int b = 5;
-	int c = a || b;
-	printf("%d\n", c);
-	return 0;
-}*///真为一 假为0
-//#include<stdio.h>
-//int main()
-//{
-//	int a = 0;
-//	int b = 0;
-//	int c = a && b;
-//	printf("%d\n", c);
-//	return 0;
-//}为假0
-//#include<stdio.h>
-//int main()
-//{
-//	int i = 0, a = 0, b = 2, c = 3, d = 4;
-//	i = a++ && ++b && d++;//左边是假 右边就不算了
-//	printf("a=%d\n b=%d\n c=%d\n d=%d\n",a,b,c,d);//1234
-//	return 0;
+//	int c;
+//	a += a; b += b;
+//	c = fun2(a, b);
+//	return c * c;
 //}
-//#include<stdio.h>
-//int main()
+//main()
 //{
-//	int i = 0, a = 1, b = 2, c = 3, d = 4;
-//	i = a++ && ++b && d++;//左边是假 右边就不算了
-//	printf("a=%d\n b=%d\n c=%d\n d=%d\n", a, b, c, d);//2 3 3 5
-//	return 0;
+//	int x = 11, y = 19;
+//	printf("%d\n", fun1(x, y));
 //}
-//#include<stdio.h>
-//int main()
-//{
-//	int i = 0, a = 0, b = 2, c = 3, d = 4;
-//	i = a++ || ++b || d++;一边是真都算
-//	printf("a=%d\n b=%d\n c=%d\n d=%d\n", a, b, c, d);//1 3 3 4
-//	return 0;
-//}
-//#include<stdio.h>
-//int main()
-//{
-//	int a = 0, b = 0;
-//	if (a > 5)
-//		b = 3;
-//	else
-//		b = -3;
-//	//相等于表达式
-//	b = (a > 5 ? 3 : -3);
-//	return 0;
-//}//条件表达式
-//程序二
-//逗号表达式
-//#include<stdio.h>
-//int main()
-//{
-//	int a = 1;
-//	int b = 2;
-//	int c = (a > b, a = b + 10, a, b = a + 1);
-//	printf("%d\n", c);//13
-//	return 0;
-//}
-//#include<stdio.h>
-//int main()
-//{
-//	int a = 1;
-//	int b = 2;
-//	int c = 0;
-//	int d = 0;
-//	if (a = b + 1, c = a / 2, d > 0)//若d大于0则代码运行 不大于0 就什么也不做
-//	{
-//		printf("%d %d %d %d\n", a, b, c, d);
-//	}
-//}
-//#include<stdio.h>
-//int main()
-//{
-//	a = get_val();
-//	count_val(a);
-//	while (a > 0)
-//	{
-//		a = get_val();
-//		count_val(a);
-//	}
-//	//可以写为while(a = get_val(),count_val(a),a>0){}
-//}
-//下标引用、函数调用操作符
-//#include<stdio.h>
-//int main()
-//{
-//	int a[10] = { 0 };//创建数组
-//	a[9] = 10;//实用下标引用操作符
-//	1 + 2;
-//	return 0;
-//}
-//#include<stdio.h>
-//int get_max(int x, int y)
-//{
-//	return x > y ? x : y;
-//}
-//int main()
-//{
-//	int a = 10;
-//	int b = 20;
-//	int max = get_max(a, b);//()就是函数调用操作符
-//	printf("max=%d\n",max);
-//	return 0;
-//}
-//   .   ->的使用
-//#include<stdio.h>
-//struct stu
-//{
-//	char name[20];
-//	int age;
-//	char id[20];
-//};
-//int main()
-//{
-//	int a = 10;
-//	struct stu s1 = { "张三",20,"202268677800" };
-//	struct stu *ps = &s1;
-//	printf("%s\n", (*ps).name);
-//	printf("%d\n", ps->age);
-//	printf("%s\n", ps->id);
-//	printf("%s\n", s1.name);
-//	printf("%d\n", s1.age);
-//	printf("%s\n", s1.id);
-//	return 0;
-//}
+
 
