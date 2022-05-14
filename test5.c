@@ -1,218 +1,173 @@
 #define _CRT_SECURE_NO_WARNINGS 1
-//结构体
-//声明
+//求两数之和
 //#include<stdio.h>
-//struct stu 
-//{
-//	char name[20];
-//	short age;
-//	char tele[12];
-//	char sex[5];
-//}s1,s2,s3;//s1 s2 s3 是三个全局全局结构体变量   定义一个结构体类型   ---  图纸
 //int main()
 //{
-//	struct std s;//s 是局部变量  创建结构体变量 ------ 创建房子
-//	return 0;
+//	int a=10, b=20,sum=0;
+//	sum = a + b;
+//	printf("%d ", sum);
 //}
-//typedef struct stu //typedef 改变量名重新起名字
-//{
-//	char name[20];
-//	short age;
-//	char tele[12];
-//	char sex[5];
-//}std;//起名字位std
-//int main()
-//{
-//	 std s;//可以直接写std不用定义
-//	return 0;
-//}
-//struct stu //typedef 改变量名重新起名字
-//{
-//	char name[20];
-//	short age;
-//	char tele[12];
-//	char sex[5];
-//}s1,s2,s3;//起名字位std
-//int main()
-//{
-//	struct stu s1 = { "张三","20","123476356","男" };
-//	struct stu s2 = { "李四","24","09876789","女" };
-//	//可以直接写std不用定义
-//	return 0;
-//}
-//#include<stdio.h>
-//struct S
-//{
-//	int a;
-//	char c;
-//	char arr[20];
-//	double d;
 //
-//};
-//struct T
-//{
-//	char ch[10];
-//	struct S s;
-//	char* pc;
-//};
-//int main()
-//{
-//	char arr[] = "hello bit\n"; 
-//	struct T t = { "hehe",{100,'w',"hello world",3.14},arr };
-//	printf("%s\n", t.ch);//hehe
-//	printf("%s\n", t.s.arr);//hello world
-//	printf("%lf\n", t.s.d);//3.14
-//	printf("%s\n", t.pc);//hlello bit
-//	return 0;
-//}//结构体的访问
-//传参 传地址方式比较好
+//求两数中最大的一个
 //#include<stdio.h>
-//typedef struct S
+//int max(int* pa, int* pb)
 //{
-//	char name[10];
-//	short age;
-//	char tele[12];
-//	char sex[5];
-//
-//}stu;
-//void print1(stu* ps)
-//{
-//	printf("name:%s\n", ps->name);
-//	printf("age:%d\n", ps->age);
-//	printf("tele:%s\n", ps->tele);
-//	printf("sex:%s\n", ps->sex);
+//	if (pa > pb)
+//		printf("%d", *pa);
+//	else
+//		printf("%d", *pb);
 //}
 //int main()
 //{
-//	stu s = { "李四",40,"132541536","男" };
-//	print1(&s);
-//	return 0;
-//}
-//调试技巧
-//test.c 可执行程序 debug  debug 版本的可执行程序 调试  release  release版本的可执行程序 发布版本
-//#include<stdio.h>
-//int main()
-//{
-//	int i = 0;
-//	for (i = 0; i <=100; i++)
-//	{
-//		printf("%d ",i);
-//	}
-//}
-//断点 按F9
-//#include<stdio.h>
-//int main()
-//{
-//	int i = 0;
-//	for (i = 0; i <=100; i++)
-//	{
-//		printf("%d ",i);
-//	}
-// 	for (i = 0; i <= 100; i++)
-//	{
-//		printf("%d ", 10 - i);
-//	}
-//}
-//调试测试
-//求1！+2！+3！+。。。。+n！
-//#include<stdio.h>
-//int main()
-//{
-//	int i = 0;
-//	int sum = 0;
-//	int n = 0;
-//	int ret = 1;
-//	scanf("%d", &n);
-//	for (i = 1; i <= n; i++)
-//	{
-//		int j = 0;
-//		ret = 1;//重新赋值回一
-//		for (j = 1; j <= i; j++)
-//		{
-//			ret *= j;//i==3时ret是二 
-//		}
-//		sum += ret;
-//	}
-//	printf("%d\n", sum);
-//	return 0;
-//}
-//#include<stdio.h>
-//int main()
-//{
-//	int i = 0;
-//	int arr[10] = { 1,2,3,4,5,6,7,8,9,10 };
-//	printf("%p\n", arr);
-//	printf("%p\n", &i);
-//	for (i = 0; i <= 12; i++)//会越界
-//	{
-//		printf("hehe\n");
-//		arr[1] = 0;
-//
-//	}
-//	system("pause");
-//	return 0;
-//}//1 栈区的使用是 高地址在再到低地址
- //2 数组下标增长是低到高变化
-//#include<stdio.h>
-//#include<assert.h>
-//char my_strcpy(char* dest,const char* src)
-//{
-//	char* ret = dest;
-//	//优化
-//	assert(dest!=NULL);
-//	assert(src != NULL);
-//	//把src指向的字符拷贝到dest指向的空间，包括‘\0’
-//	while (*dest++ = *src++)
-//	{
-//		;
-//	}
-//	return ret;
-//	//while (*src != '\0')
-//	//{
-//	//	*dest = *src;
-//	//	src++;
-//	//	dest++;
-//	//}
-//	//*dest = *src;
-//}
-//int main()
-//{
-//	char arr1[] = "#############";
-//	char arr2[] = "bit";
+//	int a, b;
+//	scanf("%d %d", &a, &b);
+//	int* pa,*pb;
+//	pa = &a;
+//	pb = &b;
+//	max(pa,pb);
 //	
-//	printf("%s\n",char my_strcpy(arr1, arr2));
-//	return 0;
 //}
-//const的使用
+//求一元二次方程的根
+//#include<stdio.h>
+//#include<math.h>
+//int main()
+//{
+//	float a, b, c,disc,x1,x2,p,q;
+//	printf("请输入a,b,c的值:");
+//	scanf("%d %d %d", &a, &b, &c);
+//	disc = b * b - 4 * a * c;
+//	p = -b / (2 * a);
+//	q = sqrt(disc) / (2 * a);
+//	x1 = p + q;
+//	x2 = p - q;
+//	printf("x1=%5.2f\nx2=%5.2f\n", x1, x2);
+//}
+//设圆半径r=1.5，圆柱高h=3，求圆周长、圆面积、圆球表面积、圆球体积、圆柱体积。
 //#include<stdio.h>
 //int main()
 //{
-//	const int num = 10;
-//	int n = 100;
-//	int* p = &num;//const int*p=&num; int*const p=&num; 注意这两个的不同
-//	*p = 20;//const int*p=&num; *p不能改
-//	p = &n;//int*const p=&num;   p不能改
-//	//const int* const p =&num;都不能改
-//	printf("%d\n", num);
-//	return 0;
+//	float h, r, l, s, sq, vq, vz;
+//	float pi = 3.1415926;
+//	printf("请输入圆的半径r:");
+//	scanf("%f", &r);
+//	printf("请输入圆柱高h:");
+//	scanf("%f", &h);
+//	l = 2 * pi * r;
+//	s = pi * r * r;
+//	sq = 4 * pi * r * r;
+//	vq = 3.0 / 4.0 * pi * r * r * r;
+//	vz = pi * r * r * h;
+//	printf("圆的周长为%6.2f ", l);
+//	printf("圆的面积为%6.2f ", s);
+//	printf("圆的表面积%6.2f ", sq);
+//	printf("圆球的体积为%6.2f ", vq);
+//	printf("圆柱的体积为%6.2f ", vz);
 //}
+//输入一个华氏温度，要求输出摄氏温度。公式为C=5/9（F—32）
 //#include<stdio.h>
-//#include<assert.h>
-//int my_strlen(const char* str)
+//int main()
 //{
-//	int count = 0;
-//	assert(str != NULL);//保证指针的有效性
-//	while (*str != '\0')
+//	float c, f;
+//	printf("请输入一个华氏温度:");
+//	scanf("%f", &f);
+//	c = (5.0/ 9.0)*(f - 32);
+//	printf("摄氏温度为:%5.2f\n", c);
+//}
+//选择结构	4个数的排序（降序）；
+//#include<stdio.h>
+//int main()
+//{
+//	int a, b, c, d, t;
+//	printf("请输入四个数:");
+//	scanf("%d,%d,%d,%d", &a, &b, &c, &d);
+//	if (a < b)
 //	{
-//		count++;
-//		str++;
+//		t = a;
+//		a = b;
+//		b = t;
 //	}
-//	return count; 
+//	if (a < c)
+//	{
+//		t = a;
+//		a = c;
+//		c = t;
+//	}
+//	if (a < d)
+//	{
+//		t = a; a = d; d = t;
+//	}
+//	if (b < c)
+//	{
+//		t = b; b = d; d = t;
+//	}
+//	if (b < d)
+//	{
+//		t = b;
+//		b = d;
+//		d = t;
+//
+//	}
+//	if (c < d)
+//	{
+//		t = c;
+//		c = d;
+//		d = t;
+//	}
+//	printf("%d %d %d %d\n", a, b, c, d);
 //}
+//任意输入一个字符，请判断是字母、数字还是特殊字符
+//#include<stdio.h>
 //int main()
 //{
-//	char arr[] = "abcdef";
-//	int len = my_strlen(arr);
-//	printf("%d\n", len);
-//	return 0;
+//	char a;
+//	printf("请任意输入一个字符:");
+//	scanf("%c", &a);
+//	if (a >= 48 && a <= 57)
+//		printf("这是一个数字！\n");
+//	else if (a >= 65 && a <= 90 || a >= 97 && a <= 122)
+//		printf("这是字母！\n");
+//	else
+//		printf("这是特殊字符！\n");
+//}
+//任意输入10个数，求最大值、最小值、平均值；
+//#include<stdio.h>
+//int main()
+//{
+//   int i, j, m, a[10], max, min;
+//   float sum = 0;
+//   for (i = 0; i < 10; i++)
+//   {
+//	   printf("输入第%d个数：",i+1);
+//	   scanf("%d", &a[i]);
+//	   sum = sum + a[i];
+//   }
+//   min = a[0];
+//   max = a[0];
+//   for (m = 0; m < 10; m++)
+//   {
+//	   max = max > a[m + 1] ? max : a[m + 1];
+//   }
+//   for (j = 0; j < 10; m++)
+//   {
+//	   min = min < a[j + 1] ? min : a[j + 1];
+//   }
+//   printf("max=%d\nmin=%d\naverage=%0.2f\n", max, min, sum / 10);
+//}
+//输入20个数，将所有大于60的数据输出
+//#include<stdio.h>
+//int main()
+//{
+//	int a[20];
+//	int i, j;
+//	for (i = 0; i < 20; i++)
+//	{
+//		printf("请输入第%d个数:", i + 1);
+//		scanf("%d", &a[i]);
+//	}
+//	for(j=0;j<20;j++)
+//	{
+//		if (a[j] > 60)
+//			printf("%d ", a[j]);
+//	}
+//	printf("\n");
 //}
