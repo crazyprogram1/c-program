@@ -1,189 +1,119 @@
 #define _CRT_SECURE_NO_WARNINGS 1
-//c语言进阶
-/*#include<stdio.h>
-int main()
-{
-	int a = 10;
-	float b = 10;
-
-	short a = 10;
-
-}*///看看地址
-//整型家族 int short char long 浮点型家族 float double 
-//构造类型 数组 结构体 struct 枚举类型 enum 联合类型 union 
-//指针类型 int *pi char *pc float *pf void *pv 
-//空类型 void 无返回值
+////求一元二次方程ax^2+bx+c=0的根(实根或虚根)，a，b，c人工输入
 //#include<stdio.h>
+//#include<math.h>
 //int main()
 //{
-//	int a = 20;
-//	//00000000 00000000 00000000 00010100
-//	//00000000 00000000 00000000 00010100
-//	//00000000 00000000 00000000 00010100
-//	//正数原码 反码 补码 相同
-//	int b = -20;
-//	//10000000 00000000 00000000 00010100 - 原码
-//	//11111111 11111111 11111111 11101011 - 反码
-//	//11111111 11111111 11111111 11110100 - 补码
-//	//0xfffffff6
-//	return 0;
-//}
-//了解 原码 补码 反码
-//#include<stdio.h>
-//int main()
-//{
-//	1 - 1;
-//	//1+(-1)
-//	//1
-//	//00000000 00000000 00000000 00000001
-//	//-1
-//	//10000000 00000000 00000000 00000001
-//	//11111111 11111111 11111111 11111110
-//	//11111111 11111111 11111111 11111111
-//	//=
-//	//10000000 00000000 00000000 00000000
-//
-//}//1-1的运输
-//大端存储模式 小端存储模式  大端 - 低位在高地址 高位在低地址  小端 高位在低地址  地位在高地址
-//#include<stdio.h>
-//int check_sys()
-//{
-//	int a = 1;
-//	char* p = (char*)&a;
-//	if (*p == 1)
-//		return 1;
-//	else
-//		return 0;
-//}
-//int check_sys()
-//{
-//	int a = 1;
-//	char* p = (char*)&a;
-//	return *p;
-//}
-//int check_sys()
-//{
-//	int a = 1;
-//	return *(char*)&a;
-//}
-////指针类型的意义；能访问几个字节：char*p;*p 访问一个字节，int*p；*p访问4个字节
-/////2.指针类型决定了指针+1，-1，加的或者减的是几个字节；char*p；p+1，跳过一个字节，int *p;p+1,跳过一个整型-4个字节
-//int main()
-//{
-//	int ret = check_sys();
-//
-//	if (ret == 1)
-//	{
-//		printf("小端\n");
-//	}
+//	float a, b, c,disc,x1,x2,realpart,imagpart;
+//	printf("请输入三个系数");
+//	scanf("%f,%f,%f", &a, &b, &c);
+//	printf("the equation");
+//	if (fabs(a) <= 1e-6)
+//		printf("is not a quadratic\n");
 //	else
 //	{
-//		printf("大端\n");
+//		disc = b * b - a * a * c;
+//		if (fabs(disc) <= 1e-6)
+//			printf("has two equal roots:%8.4f\n", -b / (2 * a));
+//		else
+//			if (disc > 1e-6)
+//			{
+//				x1 = (-b + sqrt(disc)) / (2 * a);
+//				x2 = (-b - sqrt(disc)) / (2 * a);
+//				printf("has ditinct real root:%8.4f and %8.4f\n", x1, x2);
+//			}
+//			else
+//			{
+//				realpart = -b / (2 * a);
+//				imagpart = sqrt(-disc) / (2 * a);
+//				printf("has complex roots:\n");
+//				printf("%8.4f+%8.4f\n", realpart, imagpart);
+//				printf("%8.4f-%8.4f\n", realpart, imagpart);
+//			}
 //	}
-//	return 0;
-////}
-//int main()
-//{
-//	int a = 0x11223344;
-//	int* p = &a;
-//	*p = 0;
-//	
 //
 //}
+//给你一个不多于5位的正整数，要求;
+//1.求出它是几位数；
+//2.分别输入每个数；
+//3.按逆序输出各位数字。
 //#include<stdio.h>
-//int main()
+//#include<math.h>
+//void main(void)
 //{
-//	char a = -1;
-//	signed char b = -1;
-//	unsigned char c = -1;
-//	printf("%d %d %d", a, b, c);
-//	return 0;
-//}
-//#include<stdio.h>
-//int main()
-//{
-//	char a = -128;
-//	//10000000 00000000 00000000 10000000
-//	//11111111 11111111 11111111 01111111
-//	//11111111 11111111 11111111 10000000
-//	//11111111 11111111 11111111 10000000 整型提升
-//	//%d- 打印十进制有符号的数字
-//	//%u- 打印十进制的无符号数字
-//	printf(" % u\n", a);
-//	return 0;
-//} 
-//#include<stdio.h>
-//int main()
-//{
-//	unsigned int i;
-//	for(i=9;i>=0;i--)
+//	long int num;
+//	int indiv, ten, hundred, thousand, ten_thousand, place;
+//	printf("请输入一个整数(0-99999):");
+//	scanf("%ld", &num);
+//	if (num > 9999)
+//		place = 5;
+//	else if (num > 999)
+//		place = 4;
+//	else if (num > 99)
+//		place = 3;
+//	else if (num > 9)
+//		place = 2;
+//	else place = 1;
+//	printf("位数=%d\n", place);
+//	printf("每个数字为: ");
+//	ten_thousand = num / 10000;
+//	thousand = (int)(num - ten_thousand * 10000) / 1000;
+//	hundred = (int)(num - ten_thousand * 10000 - thousand * 1000) / 100;
+//	ten = (int)(num - ten_thousand * 10000 - thousand * 1000 - hundred * 100) / 10;
+//	indiv = (int)(num - ten_thousand * 10000 - thousand * 1000 - hundred * 100 - ten * 10);
+//	switch (place)
 //	{
-//		printf("%u\n", i);
+//	case 5:
+//		printf("%d,%d,%d,%d,%d", ten_thousand, thousand, hundred, ten, indiv);
+//		printf("\n反序数字为：");
+//		printf("%d%d%d%d%d\n", indiv, ten, hundred, thousand, ten_thousand);
+//		break;
+//	case 4:
+//		printf("%d,%d,%d,%d", thousand, hundred, ten, indiv);
+//		printf("\n反序数字为：");
+//		printf("%d%d%d%d\n", indiv, ten, hundred, thousand);
+//		break;
+//	case 3:
+//		printf("%d,%d,%d", hundred, ten, indiv);
+//		printf("\n反序数字为：");
+//		printf("%d%d%d\n", indiv, ten, hundred);
+//		break;
+//	case 2:
+//		printf("%d,%d,%d", ten, indiv);
+//		printf("\n反序数字为：");
+//		printf("%d%d%d\n", indiv, ten);
+//		break;
+//	case 1:
+//		printf("%d,%d,%d", indiv);
+//		printf("\n反序数字为：");
+//		printf("%d%d%d\n", indiv);
+//		break;
 //	}
-//	return 0;
-//}//i不可能为负数 所以死循环
-//#include<stdio.h>
-//#include<string.h>
-//int main()
-//{
-//	char a[1000];
-//	int i;
-//	for (i = 0; i < 1000; i++)
-//	{
-//		a[i] = -1 - i;
-//	}
-//	printf("%d", strlen(a));//太大了，超出了范围 -1 -2 -3 ....... -128 127 .......3 2 1 0 总共255个
-//	return 0;
-//}//strlen遇到\0才可以停下来
-//浮点型的存储
-//#include<stdio.h>
-//int main()
-//{
-//	double d = 1E10;
-//	printf("lf\n", d);
-////}
-//#include<stdio.h>
-//int main()
-//{
-//	int n = 9;
-//	float* pFloat = (float*)&n;
-//	printf("n的值为：%d\n", n);
-//	printf("pFloat的值为：%f\n", *pFloat);//
-//	*pFloat = 9.0;
-//	printf("num为：%d\n", n);
-//	printf("*pFloat的值为：%f\n", *pFloat);
-//	return 0;
-//}//此代码说明，整型的数浮点型那出来时不行的。
-//浮点型的储存形式 (-1)^s * M * 2^E  在 float最高位为 s  后8位为E  剩下 23 为M
-//在doucble中   s 为最高位  后11位为 E 最后52位为M
-//列如 5.5 --- 101.1 ----- （-1)^ 0* 1.011*2^2  其中101.1化为2进制的科学计数法 1.011*2^2
-//s为0 m 为1.011  e为2+127   0 100 0000 1 011 0000 0000 0000 0000 0000 ===== 0x40b00000
-//#include<stdio.h>
-//int main()
-//{
-//	float f = 5.5;
 //}
-//0100 0000 1011 0000 0000 0000 0000 0000 ---- s为0 e的指数为为129-127  m为1.011  e全为0 全为1 是接近0 或者无穷大的数字
-
+//输出一等比数列的前十项，并求和。(输入首项和公比公比)
 //#include<stdio.h>
+//#include<math.h>
 //int main()
 //{
-//	int n = 9;
-//	float* pFloat = (float*)&n;
-//	printf("n的值为：%d\n", n);
-//	//9
-//	//00000000 00000000 00000000 00001001
-//	printf("pFloat的值为：%f\n", *pFloat);//
-//	//0 00000000 00000000000000000001001 - 补码
-//	//(-1)^0*0.000000000000000001001*2^-126 == 0.000000
-//	//
-//	*pFloat = 9.0;
-//	//1001.0
-//	//1.001*2^3
-//	//(-1)^0*1.001*2*3  e=3+127 === 10000010 
-//	//0 10000010  00100000000000000000000
-//	//1091567616
-//	printf("num为：%d\n", n);//1091567616
-//	printf("*pFloat的值为：%f\n", *pFloat);//9.0
-//	return 0;
-//}//浮点型的数取出来还是要 %f\n
+//	long int a,q,i,sum=0;
+//loop:printf("请输入等比数列的首项a=");
+//	scanf("%ld", &a);
+//	printf("请输入等比数列的公比q=");
+//	scanf("%ld", &q);
+//	if (q == 0)
+//	{
+//		printf("数据输入错误，等比数列的公比不能为0，请重新输入\n");
+//		goto loop;
+//	}
+//	else
+//	{
+//		printf("等比数列前十项为：");
+//		for (i = 0; i < 10; i++)
+//		{
+//			a = a * q;
+//			sum = sum + a / q;
+//			printf("%ld ", a / q);
+//		}
+//		printf("\n数列和sum=%ld\n", sum);
+//	}
+//}
